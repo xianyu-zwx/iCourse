@@ -79,6 +79,26 @@ function loadPageFragment(pageId) {
         });
 }
 
+// 课程管理初始化（与学生管理保持一致风格）
+function initCourses() {
+    // 这里可以添加课程页面特有的初始化逻辑
+    // 例如：加载教师下拉框数据、初始化图表等
+    fetchTeachersForCourse();
+}
+
+// 为课程页面加载教师列表（示例）
+function fetchTeachersForCourse() {
+    axios.get('/course/teacher/listAll')
+        .then(response => {
+            if (response.data.success) {
+                // 可以在这里动态更新教师下拉框
+                console.log('教师列表加载成功', response.data.data);
+            }
+        })
+        .catch(error => {
+            console.error('加载教师列表失败', error);
+        });
+}
 
 // 初始化页面特定功能
 function initPage(pageId) {
@@ -91,6 +111,9 @@ function initPage(pageId) {
             break;
         case 'attendance':
             initAttendance();
+            break;
+        case 'courses':  // 新增case
+            initCourses();
             break;
         case 'files':
             initFiles();
