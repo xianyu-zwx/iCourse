@@ -292,7 +292,17 @@
 <!--            <li>-->
         </ul>
     </div>
-    <!--<div th:style="'background-image:url(./Sys/images/bg2.jpg); width:100%; height:43%;bottom: 0;background-repeat: no-repeat;'"></div>-->
+    <div class="sidebar-bg-container" style="position: absolute; bottom: 0; left: 0; width: 100%; height: 30%;">
+        <!-- 内层div承载背景图，实现等比缩放 -->
+        <div th:style="|
+    background-image: url(@{/Sys/images/bg5.png});
+    background-repeat: no-repeat;
+    background-position: left bottom;
+    background-size: contain;
+    width: 100%;
+    height: 100%;
+  |"></div>
+    </div>
 </div>
 <!-- <div class="x-slide_left"></div> -->
 <!-- 左侧菜单结束 -->

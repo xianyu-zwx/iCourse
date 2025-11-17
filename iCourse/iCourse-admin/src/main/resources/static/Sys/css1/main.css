@@ -1,13 +1,13 @@
 @charset "utf-8";
 :root {
-    --primary: #0a192f;
-    --secondary: #112240;
-    --accent: #64ffda;
-    --text: #ccd6f6;
-    --text-secondary: #8892b0;
-    --success: #64ffda;
-    --warning: #f8e16c;
-    --danger: #ff6b6b;
+    --primary: #ffffff;
+    --secondary: #f9fafb;
+    --accent: #6366f1;
+    --text: #111827;
+    --text-secondary: #6b7280;
+    --success: #14b8a6;
+    --warning: #fbbf24;
+    --danger: #f43f5e;
     --card-bg: rgba(17, 34, 64, 0.8);
     --border: rgba(100, 255, 218, 0.2);
 }
@@ -619,10 +619,16 @@ input:focus, select:focus {
     position: relative;
 }
 
-.video-feed video {
+
+
+/* 统一图片和视频的定位样式 */
+.video-feed img, .video-feed video {
+    position: absolute; /* 子元素绝对定位，确保重叠 */
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: cover; /* 保持比例填充容器 */
 }
 
 .video-controls {

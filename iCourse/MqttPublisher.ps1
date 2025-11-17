@@ -24,13 +24,13 @@ $enableLogToFile = $true
 $enableDebugMode = $false
 
 # Attendance Message Config
-$faceId_Init = 1
-$faceId_IsIncrement = $false
+$faceId_Init = 1011
+$faceId_IsIncrement = $true
 $deviceId_Init = 1
 $deviceId_IsIncrement = $false
 $deviceId_Format = "D3"
 $visualMode_Options = @(0, 1)  # 修正为数字类型，与ESP32的visualMode保持一致
-$visualMode_InitIndex = 0
+$visualMode_InitIndex = 1
 $visualMode_IsCycle = $false
 
 # Environment Message Config

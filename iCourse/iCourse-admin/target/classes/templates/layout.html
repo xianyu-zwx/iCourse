@@ -932,25 +932,37 @@
         // 初始化视频流
         async function initVideoStream() {
             try {
-                // 实际项目中应连接到ESP32的视频流URL
                 const videoElement = document.getElementById('camera-feed');
-                if (!videoElement) return;
-                
-                // 模拟视频流 - 实际项目中替换为真实视频源
-                videoElement.src = "https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4";
-                
+                const placeholder = document.getElementById('video-placeholder');
+                if (!videoElement || !placeholder) return;
+
+                // 重置状态：先显示占位图，隐藏视频
+                placeholder.style.display = 'block';
+                videoElement.style.display = 'none';
+
+                // 加载视频源
+                videoElement.src = videoElement.getAttribute('src'); // 确保使用正确的src
+
+                // 视频加载成功：隐藏占位图，显示视频
                 videoElement.onloadedmetadata = function() {
                     console.log("视频流已加载");
+                    placeholder.style.display = 'none'; // 隐藏占位图
+                    videoElement.style.display = 'block'; // 显示视频
                 };
-                
+
+                // 视频加载失败：保持占位图显示
                 videoElement.onerror = function() {
                     console.error("视频流加载失败");
                     showNotification('无法加载摄像头画面', 'error');
+                    placeholder.style.display = 'block'; // 确保占位图显示
+                    videoElement.style.display = 'none'; // 确保视频隐藏
                 };
-                
+
             } catch (error) {
                 console.error('初始化视频流失败:', error);
                 showNotification('初始化视频流失败', 'error');
+                // 出错时强制显示占位图
+                document.getElementById('video-placeholder').style.display = 'block';
             }
         }
         
